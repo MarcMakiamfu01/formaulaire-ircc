@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demande de visa visiteur — Canada</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f5f3; padding: 2rem 1rem; }
+    .container { max-width: 720px; margin: 0 auto; }
+    h1 { font-size: 22px; font-weight: 600; margin-bottom: 0.25rem; }
+    .subtitle { font-size: 13px; color: #666; margin-bottom: 1.5rem; }
+    .note { font-size: 12px; color: #555; background: #eef4fb; border-left: 3px solid #3a87d4; border-radius: 4px; padding: 10px 12px; margin-bottom: 1.25rem; }
+    .section-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+    .section-title { font-size: 15px; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e0dfd8; display: flex; align-items: center; gap: 8px; }
+    .badge { font-size: 11px; background: #eef4fb; color: #1a5fa8; padding: 2px 8px; border-radius: 6px; font-weight: 400; }
+    .field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field label { font-size: 12px; color: #555; font-weight: 600; }
+    .field input, .field select, .field textarea { width: 100%; padding: 7px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; font-family: Arial, sans-serif; color: #1a1a1a; background: #fff; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: #3a87d4; box-shadow: 0 0 0 2px rgba(58,135,212,0.15); }
+    .field textarea { resize: vertical; min-height: 60px; }
+    .required { color: #c0392b; }
+    .member-block { border: 1px solid #e0dfd8; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; background: #fafaf8; }
+    .member-title { font-size: 13px; font-weight: 600; margin-bottom: 0.75rem; color: #555; display: flex; justify-content: space-between; align-items: center; }
+    .add-btn { background: #fff; border: 1px solid #ccc; border-radius: 6px; padding: 6px 14px; font-size: 13px; cursor: pointer; color: #1a1a1a; margin-top: 0.5rem; }
+    .add-btn:hover { background: #f5f5f3; }
+    .remove-btn { background: transparent; border: none; font-size: 12px; color: #c0392b; cursor: pointer; padding: 0; }
+    .submit-btn { width: 100%; padding: 11px; font-size: 15px; font-weight: 600; background: #1a5fa8; color: #fff; border: none; border-radius: 8px; cursor: pointer; margin-top: 0.5rem; }
+    .submit-btn:hover { background: #154e8a; }
+    #confirmation { display: none; background: #eafaf1; color: #1e7e4a; border: 1px solid #a8dfc0; border-radius: 8px; padding: 1.25rem; text-align: center; font-size: 14px; margin-top: 1rem; }
+    .full-col { grid-column: 1 / -1; }
+    input[type="checkbox"] { width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; }
+    .declaration-wrap { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 1rem; }
+    .declaration-wrap label { font-size: 13px; color: #555; line-height: 1.6; }
+    .pdf-btn { width: 100%; padding: 11px; font-size: 15px; font-weight: 600; background: #fff; color: #1a5fa8; border: 2px solid #1a5fa8; border-radius: 8px; cursor: pointer; }
+    .pdf-btn:hover { background: #eef4fb; }
+    .print-val { font-size: 13px; color: #1a1a1a; display: block; padding: 7px 10px; border-bottom: 1px solid #ccc; min-height: 32px; }
+    @media print {
+      body { background: #fff; }
+      .add-btn, .remove-btn, .submit-btn, .pdf-btn { display: none !important; }
+      .section-card { break-inside: avoid; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Création de compte IRCC — Canada</h1>
+  <p class="subtitle">Collecte d'informations pour créer un compte et un profil IRCC (ircc.canada.ca)</p>
+
+  <div class="note">
+    Les champs marqués d'un <span class="required">*</span> sont obligatoires.
+    Ces informations serviront à créer votre compte et votre profil sur le portail <strong>Mon dossier IRCC</strong>.
+  </div>
+
+  <div id="confirmation">Votre demande a été soumise avec succès. Conservez une copie de ce formulaire.</div>
+
+  <form id="visaForm">
+
+    <!-- SECTION 1 -->
+    <div class="section-card">
+      <p class="section-title">1. Demandeur principal <span class="badge">Adulte</span></p>
+      <div class="field-grid">
+        <div class="field"><label>Nom de famille <span class="required">*</span></label><input type="text" placeholder="ex. Tremblay" required></div>
+        <div class="field"><label>Prénom(s) <span class="required">*</span></label><input type="text" placeholder="ex. Marie" required></div>
+        <div class="field"><label>Date de naissance <span class="required">*</span></label><input type="date" required></div>
+        <div class="field"><label>Pays de naissance <span class="required">*</span></label><input type="text" placeholder="ex. France" required></div>
+        <div class="field"><label>Nationalité <span class="required">*</span></label><input type="text" placeholder="ex. Française" required></div>
+        <div class="field"><label>État civil <span class="required">*</span></label>
+          <select required>
+            <option value="">— Choisir —</option>
+            <option>Célibataire</option>
+            <option>Marié(e)</option>
+            <option>En union de fait</option>
+            <option>Divorcé(e)</option>
+            <option>Veuf / Veuve</option>
+          </select>
+        </div>
+        <div class="field"><label>Numéro de passeport <span class="required">*</span></label><input type="text" placeholder="ex. AB1234567"></div>
+        <div class="field"><label>Date d'expiration du passeport <span class="required">*</span></label><input type="date" required></div>
+        <div class="field"><label>Adresse courriel <span class="required">*</span></label><input type="email" placeholder="ex. marie@email.com" required></div>
+        <div class="field"><label>Téléphone</label><input type="tel" placeholder="ex. +33 6 12 34 56 78"></div>
+        <div class="field"><label>Profession <span class="required">*</span></label><input type="text" placeholder="ex. Infirmière" required></div>
+        <div class="field"><label>Employeur / Établissement</label><input type="text" placeholder="ex. CHU de Lyon"></div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-card">
+      <p class="section-title">2. Membres de la famille <span class="badge">Conjoint / Enfants</span></p>
+      <div id="members-container">
+        <div class="member-block" id="member-1">
+          <div class="member-title">Membre 1 <button type="button" class="remove-btn" onclick="removeMember(this)">Retirer</button></div>
+          <div class="field-grid">
+            <div class="field"><label>Lien de parenté <span class="required">*</span></label>
+              <select required>
+                <option value="">— Choisir —</option>
+                <option>Conjoint(e)</option>
+                <option>Enfant</option>
+                <option>Parent</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="field"><label>Nom complet <span class="required">*</span></label><input type="text" placeholder="Prénom Nom"></div>
+            <div class="field"><label>Date de naissance</label><input type="date"></div>
+            <div class="field"><label>Nationalité</label><input type="text" placeholder="ex. Française"></div>
+            <div class="field"><label>Numéro de passeport</label><input type="text" placeholder="ex. CD7654321"></div>
+            <div class="field"><label>Accompagne le demandeur?</label>
+              <select>
+                <option value="">— Choisir —</option>
+                <option>Oui</option>
+                <option>Non</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="add-btn" onclick="addMember()">+ Ajouter un membre</button>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-card">
+      <p class="section-title">3. Détails du voyage</p>
+      <div class="field-grid">
+        <div class="field"><label>Date d'entrée prévue <span class="required">*</span></label><input type="date" required></div>
+        <div class="field"><label>Date de départ prévue <span class="required">*</span></label><input type="date" required></div>
+        <div class="field"><label>Ville d'entrée au Canada <span class="required">*</span></label>
+          <select required>
+            <option value="">— Choisir —</option>
+            <option>Montréal (YUL)</option>
+            <option>Toronto (YYZ)</option>
+            <option>Vancouver (YVR)</option>
+            <option>Calgary (YYC)</option>
+            <option>Ottawa (YOW)</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field"><label>But du voyage <span class="required">*</span></label>
+          <select required>
+            <option value="">— Choisir —</option>
+            <option>Tourisme</option>
+            <option>Visite famille / amis</option>
+            <option>Affaires</option>
+            <option>Transit</option>
+            <option>Traitement médical</option>
+          </select>
+        </div>
+        <div class="field"><label>Adresse au Canada <span class="required">*</span></label><input type="text" placeholder="ex. 123 rue Ste-Catherine, Montréal" required></div>
+        <div class="field"><label>Hôte au Canada (si applicable)</label><input type="text" placeholder="Nom et relation"></div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section-card">
+      <p class="section-title">4. Déclaration</p>
+      <div class="declaration-wrap">
+        <input type="checkbox" id="declaration" required>
+        <label for="declaration">Je certifie que les renseignements fournis dans ce formulaire sont véridiques et exacts. Je comprends que de fausses déclarations peuvent entraîner un refus de visa ou une interdiction d'entrée au Canada.</label>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label>Signature (nom complet) <span class="required">*</span></label><input type="text" placeholder="Votre nom complet" required></div>
+        <div class="field"><label>Date <span class="required">*</span></label><input type="date" required></div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-top: 0.5rem;">
+      <button type="submit" class="submit-btn" style="flex:1;">Valider le formulaire</button>
+      <button type="button" class="pdf-btn" onclick="telechargerPDF()" style="flex:1;">Télécharger en PDF</button>
+    </div>
+  </form>
+
+  <div id="confirmation">Formulaire validé! Veuillez maintenant cliquer sur <strong>Télécharger en PDF</strong> et envoyer le fichier par courriel.</div>
+</div>
+
+<script>
+  let memberCount = 1;
+
+  function addMember() {
+    memberCount++;
+    const container = document.getElementById('members-container');
+    const div = document.createElement('div');
+    div.className = 'member-block';
+    div.id = 'member-' + memberCount;
+    div.innerHTML = `
+      <div class="member-title">Membre ${memberCount}
+        <button type="button" class="remove-btn" onclick="removeMember(this)">Retirer</button>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label>Lien de parenté</label>
+          <select><option value="">— Choisir —</option><option>Conjoint(e)</option><option>Enfant</option><option>Parent</option><option>Autre</option></select>
+        </div>
+        <div class="field"><label>Nom complet</label><input type="text" placeholder="Prénom Nom"></div>
+        <div class="field"><label>Date de naissance</label><input type="date"></div>
+        <div class="field"><label>Nationalité</label><input type="text" placeholder="ex. Française"></div>
+        <div class="field"><label>Numéro de passeport</label><input type="text" placeholder="ex. CD7654321"></div>
+        <div class="field"><label>Accompagne le demandeur?</label>
+          <select><option value="">— Choisir —</option><option>Oui</option><option>Non</option></select>
+        </div>
+      </div>`;
+    container.appendChild(div);
+  }
+
+  function removeMember(btn) {
+    btn.closest('.member-block').remove();
+  }
+
+  document.getElementById('visaForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const conf = document.getElementById('confirmation');
+    conf.style.display = 'block';
+    conf.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  function telechargerPDF() {
+    // Remplace tous les inputs/selects/textareas par leur valeur en texte pour l'impression
+    const form = document.getElementById('visaForm');
+    const elements = form.querySelectorAll('input, select, textarea');
+    const backup = [];
+
+    elements.forEach(el => {
+      backup.push({ el, html: el.outerHTML });
+      let val = el.type === 'checkbox' ? (el.checked ? 'Oui' : 'Non') : el.value || '—';
+      const span = document.createElement('span');
+      span.className = 'print-val';
+      span.textContent = val;
+      el.parentNode.replaceChild(span, el);
+    });
+
+    // Masquer les boutons
+    document.querySelectorAll('.add-btn, .remove-btn, .submit-btn, .pdf-btn').forEach(b => b.style.display = 'none');
+
+    window.print();
+
+    // Restaurer après impression
+    setTimeout(() => {
+      const printVals = form.querySelectorAll('.print-val');
+      printVals.forEach((span, i) => {
+        span.parentNode.replaceChild(backup[i].el, span);
+      });
+      document.querySelectorAll('.add-btn, .remove-btn, .submit-btn, .pdf-btn').forEach(b => b.style.display = '');
+    }, 1000);
+  }
+</script>
+</body>
+</html>
